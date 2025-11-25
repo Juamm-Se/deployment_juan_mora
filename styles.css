@@ -1,0 +1,53 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.stars-container {
+    font-size: 3rem;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.star {
+    color: #ccc; /* Color gris por defecto */
+    transition: color 0.2s;
+}
+
+/* Clase para cuando la estrella está seleccionada o en hover */
+.star.active {
+    color: #ffc107; /* Color dorado */
+}
+
+.info {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.small {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+button {
+    margin-top: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
