@@ -1,32 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Calificación - Caso 28</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<header class="container">
+  <h1>Hotel Reviews</h1>
+  <p class="subtitle">Califica, comenta y analiza reseñas (Vanilla JS)</p>
+</header>
 
-    <div class="container">
-        <h1>Califica nuestro servicio</h1>
-        
-        <div class="stars-container" id="starsContainer">
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
-        </div>
-
-        <div class="info">
-            <p>Tu calificación: <span id="currentRating">0</span></p>
-            <p>Promedio: <span id="averageRating">0.0</span> <span class="small">(<span id="voteCount">0</span> votos)</span></p>
-        </div>
-
-        <button id="resetBtn">Borrar Datos (Dev)</button>
+<main class="container grid">
+  <!-- Panel de métricas -->
+  <section class="card" id="stats">
+    <h2>Resumen</h2>
+    <div class="stats">
+      <div>
+        <div class="big" id="avgRating">0.0</div>
+        <div class="muted">Promedio</div>
+      </div>
+      <div>
+        <div class="big" id="totalReviews">0</div>
+        <div class="muted">Reseñas</div>
+      </div>
     </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <div class="breakdown" id="breakdown"></div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="card">
+    <h2>Nueva reseña</h2>
+
+    <form id="reviewForm">
+      <label>
+        Nombre
+        <input type="text" id="name" placeholder="Tu nombre" maxlength="30" required />
+      </label>
+
+      <label>
+        Comentario
+        <textarea id="comment" placeholder="¿Qué tal fue tu experiencia?" minlength="10" maxlength="200" required></textarea>
+      </label>
+
+      <label>
+        Calificación
+        <div class="stars" id="starPicker" aria-label="Selector de estrellas"></div>
+      </label>
+
+      <button type="submit">Publicar reseña</button>
+      <p class="error" id="formError" hidden></p>
+    </form>
+  </section>
+
+  <!-- Filtros y lista -->
+  <section class="card full">
+    <div class="toolbar">
+      <div>
+        <label>Filtrar</label>
+        <select id="filterStars">
+          <option value="all">Todas</option>
+          <option value="5">5 estrellas</option>
+          <option value="4">4 estrellas</option>
+          <option value="3">3 estrellas</option>
+          <option value="2">2 estrellas</option>
+          <option value="1">1 estrella</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Ordenar</label>
+        <select id="sortBy">
+          <option value="newest">Más recientes</option>
+          <option value="highest">Mejor rating</option>
+        </select>
+      </div>
+
+      <button class="danger" id="clearAll">Borrar todo</button>
+    </div>
+
+    <div id="reviewsList" class="reviews"></div>
+    <p class="muted" id="emptyState">Aún no hay reseñas. Sé el primero en dejar una ✨</p>
+  </section>
+</main>
